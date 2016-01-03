@@ -204,6 +204,8 @@ module RETS
         http.ca_path = @config[:http][:ca_path] if @config[:http][:ca_path]
       end
 
+      headers['accept-encoding'] = 'identity'
+
       http.start do
         http.request_get(request_uri, headers) do |response|
           # Pass along the cookies
